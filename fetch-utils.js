@@ -9,3 +9,12 @@ export async function getBbaby(){
         .select();
     return response.data;
 }
+
+export async function getBbabys(id) {
+    const response = await client
+        .from('bbaby')
+        .select()
+        .match({ id: id })
+        .singgle();
+    return response.data;
+}

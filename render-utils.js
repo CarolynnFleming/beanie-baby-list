@@ -1,18 +1,37 @@
-export function renderBbabyList(bbaby){
-    const bbabyEl = document.createElement('a');
-    const typeEl = document.createElement('p');
+export function renderBbabyDetail(bbaby){
+    const div = document.createElement('div');
+    const img = document.createElement('img');
+    const descriptionEl = document.createElement('p');
     const nameEl = document.createElement('p');
-    const yearEl = document.createElement('p');
+    const ageEl = document.createElement('p');
     const fluffEl = document.createElement('p');
+    const typeEl = document.createElement('p');
+    const ageAndTypeEl = document.createElement('div');
 
-    bbabyEl.classList.add('bbaby');
-    bbabyEl.href = `./bbaby/?id=${bbaby.id}`;
-    typeEl.textContent = bbaby.type;
-    nameEl.textContent = bbaby.name;
-    yearEl.textContent = bbaby.year;
+    div.classList.add('bbaby-detail');
+
+    nameEl. textContent = bbaby.name;
+    nameEl.classList.add('name');
+
+    descriptionEl.textContent = bbaby.description;
+    descriptionEl.classList.add('description');
+
+    ageEl.textContent = `${bbaby.age} years old`;
+    ageEl.classList.add('age');
+
     fluffEl.textContent = bbaby.fluff;
+    fluffEl.classList.add('fluff');
 
-    bbabyEl.append(typeEl, nameEl, yearEl, fluffEl);
+    typeEl.textContent = bbaby.type;
+    typeEl.classList.add('type');
 
-    return bbabyEl; 
+    ageAndTypeEl.classList.add('age-and-type');
+
+    ageAndTypeEl.append(ageEl, typeEl);
+
+    img.src = `../assets/${bbaby.type}.png`;
+
+    div.append(nameEl, img, ageAndTypeEl, descriptionEl);
+    
+    return div;
 }

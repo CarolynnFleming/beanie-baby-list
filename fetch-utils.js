@@ -3,18 +3,22 @@ const SUPABASE_URL = 'https://ftazqulflqmwusqskpxq.supabase.co';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-export async function getBbaby(){
+export async function getBbabys(){
     const response = await client 
-        .from('bbaby')
+        .from('bbabys')
         .select();
-    return response.data;
+    return checkError(response);
 }
 
-export async function getBbabys(id) {
+export async function getBbaby(id) {
     const response = await client
-        .from('bbaby')
+        .from('bbabys')
         .select()
         .match({ id: id })
-        .singgle();
-    return response.data;
+        .single();
+    return checkError(response);
+}
+
+function checkError({ data, error }) {
+    return error ? console.error(error) : data;
 }

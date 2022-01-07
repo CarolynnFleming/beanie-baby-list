@@ -35,3 +35,21 @@ export function renderBbabyDetail(bbaby){
     
     return div;
 }
+
+export function renderBbabyLicense(bbaby){
+    const div = document.createElement('div');
+    const a = document.createElement('a');
+    const img = document.createElement('img');
+    const p = document.createElement('p');
+
+    div.classList.add('bbaby-license');
+
+    p.textContent = bbaby.name;
+    img.src = `./assets/${bbaby.type}.png`;
+    a.href = `./detail/?id=${bbaby.id}`;
+    div.append(p, img);
+
+    a.append(div);
+
+    return a;
+}
